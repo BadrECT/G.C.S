@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Dashboard - G.C.S FC{% endblock %}
+
+{% block body %}
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Tableau de bord Admin</h1>
+      <p class="lead">Bienvenue, {{ app.user.name }}</p>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <!-- Card Members -->
+    <div class="col-md-4">
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-header">Membres</div>
+        <div class="card-body">
+          <h5 class="card-title">Gestion des Membres</h5>
+          <p class="card-text">Voir, modifier et supprimer des membres.</p>
+          <a href="{{ path('app_admin_members') }}" class="btn btn-light">Gérer</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card Trainings -->
+    <div class="col-md-4">
+      <div class="card text-white bg-success mb-3">
+        <div class="card-header">Entrainements</div>
+        <div class="card-body">
+          <h5 class="card-title">Planning</h5>
+          <p class="card-text">Planifier les sessions d'entrainement.</p>
+          <a href="{{ path('app_admin_trainings') }}" class="btn btn-light">Gérer</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card Financials -->
+    <div class="col-md-4">
+      <div class="card text-white bg-warning mb-3">
+        <div class="card-header">Finances</div>
+        <div class="card-body">
+          <h5 class="card-title">Paiements & Cotisations</h5>
+          <p class="card-text">Suivi des paiements des membres.</p>
+          <a href="{{ path('app_admin_payments') }}" class="btn btn-light">Gérer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

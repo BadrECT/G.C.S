@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+  <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="{{ path('app_home') }}">
+        <img src="https://cdn-icons-png.flaticon.com/512/33/33736.png" alt="Football Logo" width="40" height="40" class="d-inline-block align-text-top me-2 navbar-logo">
+        <span>FIFA</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_about') }}">A propos</a>
+          </li>
+        </ul>
+        
+        <ul class="navbar-nav ms-auto">
+          {% if app.user %}
+            <li class="nav-item">
+                <span class="nav-link">Bienvenue {{ app.user.name }}</span>
+            </li>
+            <li class="nav-item">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="nav-link text-warning fw-bold" href="{{ path('app_admin_index') }}">Tableau de bord Admin</a>
+                {% else %}
+                    <a class="nav-link" href="{{ path('app_member_dashboard') }}">Mon Espace</a>
+                {% endif %}
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+  </div>
+</nav>

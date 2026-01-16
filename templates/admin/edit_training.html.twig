@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Entraînement - G.C.S FC{% endblock %}
+
+{% block body %}
+<div class="row mb-3">
+    <div class="col-md-6">
+        <h1>Modifier la Séance : {{ training.titre }}</h1>
+    </div>
+    <div class="col-md-6 text-end">
+        <a href="{{ path('app_admin_trainings') }}" class="btn btn-light me-2">
+            <i class="fa fa-backward"></i> Retour
+        </a>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Modification de la Séance</h5>
+            </div>
+            <div class="card-body">
+                {{ form_start(form) }}
+                    <div class="mb-3">
+                        {{ form_row(form.titre, { 'attr': {'class': 'form-control mb-3'} }) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(form.description, { 'attr': {'class': 'form-control mb-3', 'rows': 4} }) }}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form_row(form.dateHeure, { 'attr': {'class': 'form-control mb-3'} }) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_row(form.lieu, { 'attr': {'class': 'form-control mb-3'} }) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form_row(form.placesMax, { 'attr': {'class': 'form-control mb-3'} }) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_row(form.coach, { 'attr': {'class': 'form-select mb-3'} }) }}
+                        </div>
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fa fa-save"></i> Mettre à jour la séance
+                        </button>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

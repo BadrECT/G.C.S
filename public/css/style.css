@@ -1,0 +1,250 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --success-color: #4cc9f0;
+    --info-color: #4895ef;
+    --warning-color: #f72585;
+    --dark-bg: #1e293b;
+    --light-bg: #f8f9fa;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f3f4f6;
+    color: #333;
+}
+
+/* Navbar Styling */
+.navbar {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: #fff !important;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9) !important;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #fff !important;
+    transform: translateY(-1px);
+}
+
+.navbar-logo {
+    filter: brightness(0) invert(1);
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+.card-title {
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.card.text-white .card-title {
+    color: #fff !important;
+}
+
+.card-subtitle {
+    font-weight: 500;
+    color: #6c757d !important;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 10px;
+    padding: 0.6rem 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    box-shadow: 0 4px 10px rgb(255, 255, 255);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+}
+
+.btn-light {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    color: var(--primary-color);
+}
+
+.btn-light:hover {
+    background: #f9fafb;
+    color: var(--secondary-color);
+    border-color: #d1d5db;
+}
+
+/* Tables */
+.table-responsive {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-bottom: 0;
+}
+
+.table thead th {
+    border: none;
+    background-color: transparent;
+    color: #64748b;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding: 1rem;
+}
+
+.table tbody tr {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.table tbody tr:hover {
+    transform: scale(1.005);
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.table td {
+    padding: 1.2rem 1rem;
+    vertical-align: middle;
+    border-top: none;
+    border-bottom: none;
+    color: #4b5563;
+    font-weight: 500;
+}
+
+.table td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.table td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* Form Controls */
+.form-control {
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e5e7eb;
+    background-color: #f9fafb;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    background-color: #fff;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.1);
+}
+
+input[type="submit"]:not(.btn-sm),
+button[type="submit"]:not(.btn-sm) {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+/* Force small width for action buttons */
+.btn-sm-action,
+.table .btn-sm,
+.table button[type="submit"] {
+    width: auto !important;
+    margin-top: 0 !important;
+    padding: 0.25rem 0.5rem !important;
+    display: inline-block !important;
+}
+
+/* Badges */
+.btn-white {
+    background-color: #fff;
+    color: var(--primary-color) !important;
+    border: 1px solid #e5e7eb;
+}
+
+.btn-white:hover {
+    background-color: #f9fafb;
+    border-color: var(--primary-color);
+}
+
+/* Rounded badges like image */
+.badge {
+    padding: 0.5em 1.2em;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.bg-success {
+    background-color: #10b981 !important;
+    color: #fff !important;
+}
+
+.bg-danger {
+    background-color: #ef4444 !important;
+    color: #fff !important;
+}
+
+.bg-secondary {
+    background-color: #6c757d !important;
+    color: #fff !important;
+}
+
+.bg-warning {
+    background-color: #f59e0b !important;
+    color: #fff !important;
+}
+
+/* Adjust table actions gap */
+.table .d-flex.gap-2 {
+    gap: 0.5rem !important;
+}
+
+.table thead th {
+    background-color: #fff !important;
+    color: #1a1d21 !important;
+    border-bottom: 2px solid #f3f4f6;
+}

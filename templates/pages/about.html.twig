@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A propos - FIFA{% endblock %}
+
+{% block body %}
+<div class="text-center mb-5">
+    <h1 class="display-3 fw-bold text-primary mb-2">À Propos du FIFA</h1>
+    <p class="h5 text-muted fw-normal">Plus qu'un club, une famille. La passion du football au cœur de notre gestion.</p>
+</div>
+
+<div class="row align-items-center g-5 mb-5">
+    <!-- Image Column -->
+    <div class="col-lg-6">
+        <div class="position-relative overflow-hidden rounded-4 shadow-lg" style="min-height: 400px;">
+            <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Stadium Tunnel" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0">
+            <div class="position-absolute bottom-0 start-0 p-4">
+                <span class="badge bg-light text-primary fs-6 px-3 py-2 border shadow-sm rounded-pill">
+                    <i class="fas fa-map-marker-alt text-primary me-2"></i>Stade Municipal
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Text Content Column -->
+    <div class="col-lg-6">
+        <h2 class="fw-bold mb-4 text-dark">Notre Histoire & Nos Valeurs</h2>
+        <p class="text-secondary mb-4">
+            Fondé avec l'ambition de réunir les talents locaux, le <strong>FIFA</strong> est aujourd'hui une référence en matière de formation et de compétition. Nous visons l'excellence sur et en dehors du terrain, en inculquant des valeurs de respect, de travail et de solidarité.
+        </p>
+        <p class="text-secondary mb-5">
+            Cette application est le cœur numérique du club : elle permet au staff technique, aux dirigeants et aux joueurs de rester connectés pour une saison réussie.
+        </p>
+
+        <!-- Features Icons -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-6 d-flex align-items-center">
+                <div class="bg-primary bg-opacity-10 text-primary rounded-circle p-3 me-3" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fa fa-graduation-cap fa-lg"></i>
+                </div>
+                <div>
+                    <h5 class="fw-bold mb-0">Formation</h5>
+                    <small class="text-muted">École labellisée</small>
+                </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+                <div class="bg-success text-white rounded-3 p-3 me-3" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-futbol fa-lg"></i>
+                </div>
+                <div>
+                    <h5 class="fw-bold mb-0">Communauté</h5>
+                    <small class="text-muted">Esprit d'équipe</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Card -->
+        <div class="card border-0 shadow-sm bg-light rounded-4 overflow-hidden">
+            <div class="card-body p-4 position-relative border-start border-4 border-primary">
+                <span class="badge bg-primary rounded-pill position-absolute top-0 end-0 m-3 px-3 py-2">Fondé en 2024</span>
+                <h6 class="text-uppercase text-muted fw-bold small mb-1">Fiche Technique</h6>
+                <h3 class="fw-bold mb-0">Club FIFA</h3>
+                <span class="badge bg-secondary rounded-pill position-absolute bottom-0 end-0 m-3">Couleurs: Bleu/Blanc</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

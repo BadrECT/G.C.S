@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Entraînements - G.C.S FC{% endblock %}
+
+{% block body %}
+<div class="row mb-3">
+    <div class="col-md-6">
+        <h1>Gestion des Entraînements</h1>
+    </div>
+    <div class="col-md-6 text-end">
+        <a href="{{ path('app_admin_training_add') }}" class="btn btn-success">
+            <i class="fa fa-plus"></i> Créer une séance
+        </a>
+        <a href="{{ path('app_admin_index') }}" class="btn btn-light me-2">
+            <i class="fa fa-backward"></i> Retour
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    {% for training in trainings %}
+    <div class="col-md-4 mb-3">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-header bg-success text-white">
+                <h5 class="card-title mb-0">{{ training.titre }}</h5>
+            </div>
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">
+                    <i class="fa fa-calendar-alt me-2"></i>{{ training.dateHeure|date('d/m/Y H:i') }}
+                </h6>
+                <p class="card-text">
+                    <strong><i class="fa fa-map-marker-alt me-2"></i>Lieu:</strong> {{ training.lieu }}<br>
+                    <strong><i class="fa fa-users me-2"></i>Max:</strong> {{ training.placesMax }} pers.<br>
+                    <hr>
+                    {{ training.description|nl2br }}
+                </p>
+                {% if training.coach %}
+                    <p class="small text-muted mb-0">
+                        <strong>Coach:</strong> {{ training.coach.name }}
+                    </p>
+                {% endif %}
+            </div>
+            <div class="card-footer bg-white border-top-0 d-flex justify-content-between gap-2">
+                <a href="{{ path('app_admin_training_edit', {id: training.id}) }}" class="btn btn-sm btn-dark px-3 fw-bold flex-grow-1">
+                    Modifier
+                </a>
+                <form action="{{ path('app_admin_training_delete', {id: training.id}) }}" method="post" class="flex-grow-1" onsubmit="return confirm('Êtes-vous sûr de vouloir annuler cette séance ?')">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ training.id) }}">
+                    <button type="submit" class="btn btn-sm btn-danger px-3 fw-bold w-100">
+                        Supprimer
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <div class="col-12 text-center py-5">
+            <p class="lead text-muted">Aucun entraînement prévu pour le moment.</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

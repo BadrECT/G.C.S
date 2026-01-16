@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Espace - G.C.S FC{% endblock %}
+
+{% block body %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="display-5 fw-bold text-primary">
+            <i class="fas fa-user-circle me-2"></i> Mon Espace Membre
+        </h1>
+        <p class="lead text-muted">Bienvenue, {{ app.user.name }} ! Consultez vos entraînements et vos cotisations.</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Upcoming Trainings Section -->
+    <div class="col-md-8">
+        <div class="card shadow-sm h-100 border-0">
+            <div class="card-header bg-primary text-white py-3">
+                <h5 class="mb-0 fw-bold"><i class="fas fa-calendar-alt me-2"></i> Prochains Entraînements</h5>
+            </div>
+            <div class="card-body">
+                {% if entrainements|length > 0 %}
+                    <div class="list-group list-group-flush">
+                        {% for training in entrainements %}
+                            <div class="list-group-item p-3 border-bottom-0 mb-2 bg-light rounded">
+                                <div class="d-flex w-100 justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="mb-1 fw-bold text-dark">{{ training.titre }}</h5>
+                                        <p class="mb-1 text-muted"><i class="fas fa-map-marker-alt me-1 text-danger"></i> {{ training.lieu }}</p>
+                                        <small class="text-primary fw-bold"><i class="fas fa-user-tie me-1"></i> Coach : {{ training.coach.name }}</small>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="badge bg-primary rounded-pill mb-2 d-block">
+                                            {{ training.dateHeure|date('d/m/Y') }}
+                                        </span>
+                                        <small class="fw-bold text-dark">
+                                            <i class="far fa-clock me-1"></i> {{ training.dateHeure|date('H:i') }}
+                                        </small>
+                                    </div>
+                                </div>
+                                {% if training.description %}
+                                    <small class="d-block mt-2 text-muted fst-italic border-top pt-2">{{ training.description }}</small>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-5 opacity-75">
+                        <i class="fas fa-calendar-times fa-3x text-muted mb-3"></i>
+                        <p>Aucun entraînement prévu pour le moment.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Payments Section -->
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100 border-0">
+            <div class="card-header bg-success text-white py-3">
+                <h5 class="mb-0 fw-bold"><i class="fas fa-file-invoice-dollar me-2"></i> Mon Salaire</h5>
+            </div>
+            <div class="card-body p-0">
+                {% if paiements|length > 0 %}
+                    <div class="list-group list-group-flush">
+                        {% for payment in paiements %}
+                            <div class="list-group-item p-3">
+                                <div class="d-flex w-100 justify-content-between mb-1">
+                                    <h6 class="mb-0 fw-bold">{{ payment.motif }}</h6>
+                                    <small class="text-muted">{{ payment.datePaiement|date('d/m/Y') }}</small>
+                                </div>
+                                <div class="d-flex w-100 justify-content-between align-items-center">
+                                    <span class="fw-bold text-dark">{{ payment.montant|number_format(2, ',', ' ') }} €</span>
+                                    {% if payment.statut == 'payé' %}
+                                        <span class="badge bg-success rounded-pill"><i class="fas fa-check me-1"></i> Payé</span>
+                                    {% elseif payment.statut == 'en_attente' %}
+                                        <span class="badge bg-warning text-dark rounded-pill"><i class="fas fa-hourglass-half me-1"></i> En attente</span>
+                                    {% else %}
+                                        <span class="badge bg-danger rounded-pill">Annulé</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-5 opacity-75">
+                        <i class="fas fa-receipt fa-3x text-muted mb-3"></i>
+                        <p>Aucun historique de paiement.</p>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="card-footer bg-light text-center small text-muted">
+                Pour toute question, contactez l'administration.
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

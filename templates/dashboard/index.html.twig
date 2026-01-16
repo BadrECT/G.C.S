@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord - FIFA{% endblock %}
+
+{% block body %}
+<!-- Hero Section -->
+<div class="row mb-5 align-items-center">
+    <div class="col-lg-6">
+        <h1 class="display-4 fw-bold mb-4 text-primary">FIFA<br><span class="text-dark">Passion & Victoire</span></h1>
+        <p class="lead text-muted mb-4">
+            Bienvenue sur la plateforme officielle du FIFA. <br>
+            Gestion des licences, calendrier des matchs, entraînements et vie du club. Tout pour le ballon rond.
+        </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            {% if not app.user %}
+                <a href="{{ path('app_register') }}" class="btn btn-primary btn-lg px-4 me-md-2">Devenir Licencié</a>
+                <a href="{{ path('app_login') }}" class="btn btn-outline-secondary btn-lg px-4">Espace Joueur/Coach</a>
+            {% else %}
+                <div class="alert alert-info px-4 mb-4 d-flex align-items-center rounded-3 border-0 shadow-sm" role="alert">
+                    <i class="fas fa-user-check me-3 fs-4"></i> 
+                    <div>
+                        <strong>Bienvenue, {{ app.user.name }} !</strong>
+                        <div class="small">Vous êtes connecté à votre espace.</div>
+                    </div>
+                </div>
+
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-lg-6 d-none d-lg-block">
+        <!-- Football Action Image -->
+        <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Football Action" class="img-fluid rounded-4 shadow-lg">
+    </div>
+</div>
+
+    <!-- Features Section for Visitors & Admins -->
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="feature col text-start">
+            <div class="feature-icon bg-primary shadow-sm rounded-3 mb-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h2 class="h5 fw-bold mb-3">Effectif & Joueurs</h2>
+            <p class="text-muted small">Gérez l'effectif, des débutants aux vétérans. Suivi des licences et des fiches médicales en toute simplicité.</p>
+        </div>
+        <div class="feature col text-start">
+            <div class="feature-icon bg-success shadow-sm rounded-3 mb-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                <i class="fas fa-futbol text-white fs-4"></i>
+            </div>
+            <h2 class="h5 fw-bold mb-3">Entraînements</h2>
+            <p class="text-muted small">Planifiez les séances tactiques et physiques. Gérez les présences sur le terrain pour préparer le match du dimanche.</p>
+        </div>
+        <div class="feature col text-start">
+            <div class="feature-icon bg-warning shadow-sm rounded-3 mb-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
+            </div>
+            <h2 class="h5 fw-bold mb-3">Matchs & Championnat</h2>
+            <p class="text-muted small">Le calendrier de la saison, les convocations, les résultats et le classement. Vivez la saison à fond.</p>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="cta-section text-center text-white rounded-3 shadow-lg p-5 mb-4 position-relative overflow-hidden bg-dark">
+        <div class="position-relative z-1 py-4">
+            <h2 class="display-5 fw-bold mb-3"><i class="fa fa-futbol me-3"></i>Prêt pour le coup d'envoi ?</h2>
+            <p class="fs-4 mb-4">Rejoignez le <strong>FIFA</strong> dès maintenant.<br>Prenez votre licence et entrez sur le terrain !</p>
+            {% if not app.user %}
+                <a href="{{ path('app_register') }}" class="btn btn-light btn-lg px-5 py-3 fw-bold rounded-pill shadow-sm cta-btn">
+                    S'inscrire au Club <i class="fa fa-arrow-right ms-2"></i>
+                </a>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                 <a href="{{ path('app_admin_index') }}" class="btn btn-warning btn-lg px-5 py-3 fw-bold rounded-pill shadow-sm cta-btn">
+                    Tableau de bord Admin <i class="fa fa-tachometer-alt ms-2"></i>
+                </a>
+            {% elseif app.user %}
+                 <a href="{{ path('app_member_dashboard') }}" class="btn btn-primary btn-lg px-5 py-3 fw-bold rounded-pill shadow-sm cta-btn">
+                    Accéder à mon Espace <i class="fa fa-arrow-right ms-2"></i>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
