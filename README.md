@@ -72,7 +72,7 @@ Suivez ces étapes pour installer le projet localement :
 
 ## 📄 Licence
 
-Ce projet est sous licence propriétaire/privée.
+Ce projet est sous licence propriétaire.
 
 ---
 *Développé par [BadrECT](https://github.com/BadrECT)*
